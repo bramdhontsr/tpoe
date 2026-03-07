@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Praxis of Everything — Bram D’Hont</title>
+  <meta name="description" content="Central index page for Bram D’Hont, Le Moment Dansa, A003558, the lemniscape, and the AI interpretations." />
+  <style>
+    :root{
+      --bg:#f5f1e8;
+      --paper:#fffdf8;
+      --ink:#1f1d1a;
+      --muted:#6e675f;
+      --line:#d8d0c3;
+      --accent:#2f4d66;
+      --accent2:#7b3f1f;
+      --shadow:0 16px 42px rgba(0,0,0,.08);
+      --max:1180px;
+      --text:760px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1000px 420px at 50% -5%, rgba(123,63,31,.07), transparent 60%),
+        linear-gradient(180deg, #f8f5ee 0%, var(--bg) 100%);
+      color:var(--ink);
+      font:17px/1.72 Georgia, "Times New Roman", serif;
+    }
+
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{display:block; max-width:100%}
+
+    .wrap{
+      width:min(calc(100% - 24px), var(--max));
+      margin:0 auto;
+    }
+
+    .hero{
+      padding:18px 0 16px;
+    }
+
+    .hero-card,
+    .paper,
+    .toc-top,
+    .quote-box,
+    .mini-card,
+    .info-box,
+    .img-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,253,248,.98));
+      border:1px solid var(--line);
+      border-radius:0;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      overflow:hidden;
+    }
+
+    .hero-top{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:0;
+    }
+
+    .hero-copy{
+      padding:34px 28px 24px;
+    }
+
+    .kicker{
+      display:inline-block;
+      font:600 12px/1.2 system-ui, sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(30px, 5.2vw, 62px);
+      line-height:1.02;
+      letter-spacing:-.02em;
+    }
+
+    .subtitle{
+      margin:0 0 18px;
+      font-size:clamp(18px, 2.2vw, 25px);
+      line-height:1.33;
+      color:#2f2a26;
+      max-width:30ch;
+    }
+
+    .hero-copy p{
+      max-width:58ch;
+      margin:0 0 14px;
+    }
+
+    .hero-figure{
+      min-height:320px;
+      border-left:1px solid var(--line);
+      background:#e9e1d5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-figure img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      background:#e5ddd1;
+    }
+
+    .fig-label{
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      background:rgba(255,253,248,.92);
+      border:1px solid rgba(0,0,0,.08);
+      padding:8px 12px;
+      font:12px/1 system-ui,sans-serif;
+      color:#4c463f;
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      padding:14px 18px 16px;
+      border-top:1px solid var(--line);
+      background:rgba(255,252,246,.72);
+    }
+
+    .hero-meta .meta{
+      border:1px solid var(--line);
+      padding:12px;
+      background:#fffdfa;
+      min-height:100%;
+    }
+
+    .hero-meta strong{
+      display:block;
+      margin-bottom:6px;
+      font:700 12px/1.2 system-ui,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+    }
+
+    .hero-meta span{
+      font:14px/1.45 system-ui,sans-serif;
+      color:#302c27;
+    }
+
+    .main{
+      padding:0 0 42px;
+    }
+
+    .toc-top{
+      margin:0 0 20px;
+      padding:16px 16px 12px;
+    }
+
+    .toc-top h2{
+      margin:0 0 12px;
+      font:700 14px/1.2 system-ui,sans-serif;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .toc-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:6px 18px;
+    }
+
+    .toc-grid a{
+      display:block;
+      padding:8px 0;
+      color:var(--ink);
+      font-size:15px;
+      line-height:1.35;
+      border-bottom:1px solid rgba(216,208,195,.6);
+    }
+
+    .paper{
+      padding:24px clamp(14px, 4vw, 42px) 32px;
+    }
+
+    .lead{
+      width:min(100%, var(--text));
+      font-size:20px;
+      line-height:1.78;
+      color:#2c2824;
+      margin:0 0 28px;
+    }
+
+    .section{
+      padding-top:8px;
+      margin-top:10px;
+      border-top:1px solid rgba(216,208,195,.75);
+      scroll-margin-top:20px;
+    }
+
+    .section:first-of-type{
+      border-top:0;
+      margin-top:0;
+      padding-top:0;
+    }
+
+    .section-label{
+      display:inline-block;
+      margin:0 0 10px;
+      color:var(--muted);
+      font:700 12px/1.2 system-ui,sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .section h2{
+      width:min(100%, var(--text));
+      margin:0 0 12px;
+      font-size:clamp(28px, 4vw, 44px);
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+
+    .summary{
+      width:min(100%, var(--text));
+      border-left:4px solid #b39884;
+      padding:10px 0 10px 16px;
+      margin:0 0 18px;
+      font-size:18px;
+      line-height:1.6;
+      color:#3a342f;
+      background:linear-gradient(90deg, rgba(179,152,132,.09), transparent 85%);
+    }
+
+    .section p,
+    .section ul{
+      width:min(100%, var(--text));
+      margin:0 0 16px;
+    }
+
+    .section ul{padding-left:22px}
+    .section li{margin:8px 0}
+
+    .split{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 300px;
+      gap:24px;
+      align-items:start;
+      margin:10px 0 24px;
+    }
+
+    .quote-box,
+    .info-box{
+      padding:16px;
+    }
+
+    .quote-box h3,
+    .info-box h3,
+    .mini-card h3{
+      margin:0 0 10px;
+      font:700 13px/1.2 system-ui,sans-serif;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .quote-box p,
+    .info-box p{
+      width:auto;
+      margin:0 0 12px;
+      font-size:15px;
+      line-height:1.55;
+    }
+
+    .img-panel{
+      margin:14px 0 10px;
+      overflow:hidden;
+      background:#ebe3d8;
+    }
+
+    .img-panel img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      background:#e5ddd2;
+    }
+
+    .img-cap{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 14px 12px;
+      font:13px/1.35 system-ui,sans-serif;
+      color:var(--muted);
+      background:#fffdfa;
+      border-top:1px solid var(--line);
+    }
+
+    .formula{
+      width:min(100%, var(--text));
+      margin:18px 0 20px;
+      padding:16px 18px;
+      border:1px solid var(--line);
+      background:#fffdfa;
+      overflow:auto;
+      font-size:20px;
+      line-height:1.5;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      width:100%;
+      margin:18px 0 20px;
+    }
+
+    .mini-card{
+      padding:16px;
+    }
+
+    .mini-card p{
+      width:auto;
+      margin:0 0 10px;
+      font-size:15px;
+      line-height:1.58;
+    }
+
+    .mini-card a{
+      font:600 14px/1.3 system-ui,sans-serif;
+    }
+
+    .footer{
+      width:min(calc(100% - 24px), var(--max));
+      margin:0 auto 28px;
+      color:var(--muted);
+      font:13px/1.6 system-ui,sans-serif;
+      text-align:center;
+    }
+
+    @media (max-width: 980px){
+      .hero-top,
+      .split,
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .hero-figure{
+        border-left:0;
+        border-top:1px solid var(--line);
+        min-height:220px;
+      }
+
+      .hero-meta{
+        grid-template-columns:1fr;
+      }
+
+      .toc-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px){
+      body{font-size:16px}
+      .wrap{width:min(calc(100% - 14px), var(--max))}
+      .hero{padding-top:8px}
+      .hero-copy{padding:22px 14px 18px}
+      .paper{padding:18px 12px 24px}
+      .lead{font-size:18px}
+      .summary{font-size:17px}
+      .toc-top{padding:14px 12px 10px}
+      .toc-grid{grid-template-columns:1fr}
+      .toc-grid a{font-size:16px}
+      .img-cap{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:4px;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-top">
+          <div class="hero-copy">
+            <div class="kicker">Central index / main page</div>
+            <h1>The Praxis of Everything</h1>
+            <p class="subtitle">
+              Bram D’Hont, <em>Le Moment Dansa</em>, A003558, the lemniscape, and the recursive relation between art, life, and form.
+            </p>
+            <p>
+              This page is the main entrance to a body of work that began not in mathematics, but in painting.
+              Its center is Bram D’Hont: painter, investigator of structure, and maker of
+              <em>Le Moment Dansa</em>, the work from which a surprising chain of questions emerged.
+            </p>
+            <p>
+              That chain runs from aesthetic construction to number-theoretic resonance, from the recursive logic of a painting
+              to OEIS sequence A003558, from the plotted shelf pattern that appears to echo the Poincaré series
+              <em>1 / ((1 − x²)(1 − x³))</em> to the lemniscate-shaped path later called <em>lemniscape</em>.
+            </p>
+            <p>
+              The AI pages linked below are not the origin of this project. They are secondary readings of Bram D’Hont’s work.
+              Their purpose is to clarify, test, and sharpen what the work itself had already brought into view.
+            </p>
+          </div>
+
+          <figure class="hero-figure">
+            <img src="webp/001.webp" alt="Le Moment Dansa visual" />
+            <div class="fig-label">Main image · webp/001.webp</div>
+          </figure>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta">
+            <strong>Main subject</strong>
+            <span>Bram D’Hont as painter and discoverer of a recursive artistic problem.</span>
+          </div>
+          <div class="meta">
+            <strong>Mathematical hinge</strong>
+            <span>A003558 and the observed shelf-pattern relation to the Poincaré series.</span>
+          </div>
+          <div class="meta">
+            <strong>Secondary material</strong>
+            <span>Anthropic, DeepSeek, and OpenAI pages as distinct AI interpretations.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    <nav class="toc-top">
+      <h2>Contents</h2>
+      <div class="toc-grid">
+        <a href="#bram">1. Bram D’Hont</a>
+        <a href="#dansa">2. Le Moment Dansa</a>
+        <a href="#discovery">3. Discovery and accident</a>
+        <a href="#a003558">4. A003558</a>
+        <a href="#lemniscape">5. Lemniscape</a>
+        <a href="#praxis">6. Praxis and poiesis</a>
+        <a href="#ai">7. The AI readings</a>
+        <a href="#status">8. What this project is</a>
+        <a href="#links">9. Main links</a>
+      </div>
+    </nav>
+
+    <article class="paper">
+
+      <p class="lead">
+        The central claim of this page is simple. The project did not begin as an AI exercise, a mathematical trick,
+        or a philosophical slogan. It began as the work of a painter whose aesthetic investigation unexpectedly opened onto
+        a deeper pattern. Everything else came later.
+      </p>
+
+      <section class="section" id="bram">
+        <div class="section-label">Section 1</div>
+        <h2>Bram D’Hont</h2>
+        <p class="summary">
+          Bram D’Hont is the cause of the whole structure. The project begins with his artistic work, his formal curiosity,
+          and his sustained search for patterns that connect visual order, lived experience, and the larger logic of nature.
+        </p>
+
+        <div class="split">
+          <div>
+            <p>
+              This page takes Bram D’Hont first and foremost as a painter. That matters because the strongest way to read the project
+              is not to treat the art as an illustration of theory, but to treat the theory as something slowly disclosed by the art.
+            </p>
+            <p>
+              His work moves between aesthetic construction, recurrence, color logic, and a form of investigation that is neither purely
+              scientific nor merely expressive. It is better described as disciplined artistic inquiry: a search for form severe enough
+              to produce consequences beyond the canvas.
+            </p>
+            <p>
+              In that sense, Bram’s role is not that of someone borrowing mathematics for prestige. It is the reverse:
+              the mathematics became visible because the work was already structured enough to generate mathematical questions.
+            </p>
+          </div>
+
+          <aside class="quote-box">
+            <h3>Main principle</h3>
+            <p>
+              Bram is not the curator of AI texts that happen to mention him.
+              He is the origin from which those texts derive their legitimacy.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="dansa">
+        <div class="section-label">Section 2</div>
+        <h2><em>Le Moment Dansa</em></h2>
+        <p class="summary">
+          <em>Le Moment Dansa</em> is the artistic nucleus of the whole project: the work in which rotation, recurrence,
+          and structured variation first acquired durable form.
+        </p>
+
+        <p>
+          The painting is important not only because it came first, but because it already contained the sort of formal tension
+          that later made number-theoretic and geometric readings possible. It was a work of aesthetic necessity before it was
+          a problem for mathematics.
+        </p>
+
+        <p>
+          The best way to understand it is as a generative source. Later texts, images, and conceptual models do not replace it.
+          They unfold from it. The work remains the background radiation of the larger structure.
+        </p>
+
+        <div class="img-panel">
+          <img src="webp/002.webp" alt="Le Moment Dansa image" />
+          <div class="img-cap">
+            <span>Le Moment Dansa</span>
+            <span>webp/002.webp</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="discovery">
+        <div class="section-label">Section 3</div>
+        <h2>Discovery, accident, and aesthetic research</h2>
+        <p class="summary">
+          The project matters because the discovery was not engineered backward from theory. It arose through artistic investigation,
+          observation, and a chain of recognitions that had the character of accident without being arbitrary.
+        </p>
+
+        <p>
+          The word “accident” is important here, but only if used carefully. The emergence of the mathematical layer was not planned in advance.
+          Yet it was not random either. It became visible because the work had been built with enough rigor for deeper regularities to appear.
+        </p>
+
+        <p>
+          That is why the artistic side must remain central. Without the painting, there is no living reason to care about the sequence.
+          Without the esthetic inquiry, the later mathematics would be only a curiosity. The strength of the project lies in the fact
+          that one made the other necessary.
+        </p>
+      </section>
+
+      <section class="section" id="a003558">
+        <div class="section-label">Section 4</div>
+        <h2>A003558</h2>
+        <p class="summary">
+          The mathematical hinge of the project is OEIS sequence A003558: the least exponent for which a power of 2 returns to either +1 or −1 modulo an odd number.
+        </p>
+
+        <p>
+          That sequence became central because it offered a crisp arithmetic form for the problem of return:
+          return to identity and return to inversion. This gave Bram’s work a mathematically exact counterpart
+          without reducing the work to arithmetic.
+        </p>
+
+        <div class="formula">
+          a(n) = min { m &gt; 0 : 2<sup>m</sup> ≡ ±1 (mod 2n + 1) }
+        </div>
+
+        <p>
+          From there came the further observation: plots related to this sequence seemed to expose a shelf-like pattern that closely tracks
+          the coefficients of
+          <em>1 / ((1 − x²)(1 − x³))</em>.
+          That observation remains the most intriguing mathematical opening in the entire project.
+        </p>
+
+        <p>
+          The relation is best stated carefully: it is a powerful observed correspondence, not yet a finished theorem.
+          That restraint is not weakness. It is exactly what makes the project credible.
+        </p>
+      </section>
+
+      <section class="section" id="lemniscape">
+        <div class="section-label">Section 5</div>
+        <h2>Lemniscape</h2>
+        <p class="summary">
+          The lemniscate became more than a geometric image. It became an inhabitable path: a therapeutic, reflective,
+          and existential extension of the same recursive imagination.
+        </p>
+
+        <p>
+          The figure-eight curve supplied a structure in which two loops, one crossing, and repeated passage could be read together.
+          This gave a spatial body to what had already become visible in the painting and in the arithmetic language of return.
+        </p>
+
+        <p>
+          <em>Lemniscape</em> is therefore not an ornamental metaphor. It is the practical and experiential form of the same inquiry:
+          how a path can return without merely repeating, and how crossing can become transformation rather than stasis.
+        </p>
+
+        <div class="img-panel">
+          <img src="webp/003.webp" alt="Lemniscape image" />
+          <div class="img-cap">
+            <span>Lemniscape</span>
+            <span>webp/003.webp</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="praxis">
+        <div class="section-label">Section 6</div>
+        <h2>Praxis and poiesis</h2>
+        <p class="summary">
+          The philosophical axis of the project lies in the relation between making, doing, reflecting, and inhabiting.
+          Here art is not isolated from life; it becomes one mode of a larger praxis.
+        </p>
+
+        <p>
+          The page title, <em>The Praxis of Everything</em>, points in precisely this direction. The work is not only about representation.
+          It is about how making becomes a form of thought, and how thought must eventually re-enter life as action, path, care, and orientation.
+          The painting belongs to poiesis, but it presses toward praxis.
+        </p>
+
+        <p>
+          That is why the project could not remain only an artwork, and why it could not remain only a mathematical curiosity.
+          It demanded expansion into a mode of living inquiry.
+        </p>
+
+        <div class="split">
+          <div>
+            <p>
+              In this framework, poiesis gives form, praxis gives consequence, and reflection mediates between them.
+              The importance of Bram’s project is that these are not kept separate as academic categories.
+              They are made to touch.
+            </p>
+          </div>
+          <aside class="info-box">
+            <h3>Philosophical center</h3>
+            <p>
+              The project is strongest when it shows how artistic making can produce knowledge without pretending to be laboratory science.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="ai">
+        <div class="section-label">Section 7</div>
+        <h2>The AI readings</h2>
+        <p class="summary">
+          The AI pages are not the main event. They are three different editorial-intellectual readings of Bram D’Hont’s work and discoveries.
+        </p>
+
+        <p>
+          The Anthropic page presents the most aggressive and ambitious version, pushing the structure outward toward topology and grand synthesis.
+          The DeepSeek page is calmer and more mathematically disciplined. The OpenAI page is best suited as a bridge text:
+          structurally clear, interpretively careful, and publicly readable. :contentReference[oaicite:2]{index=2}
+        </p>
+
+        <div class="cards">
+          <div class="mini-card">
+            <h3>Anthropic</h3>
+            <p>
+              The boldest and most maximal reading. Useful for scale and conceptual energy, but it sometimes reaches further than the proof permits. :contentReference[oaicite:3]{index=3}
+            </p>
+            <a href="https://bramdhontsr.github.io/tpoe-anthropic/">Open Anthropic edition</a>
+          </div>
+
+          <div class="mini-card">
+            <h3>DeepSeek</h3>
+            <p>
+              The most mathematically sober version. Best for the arithmetic backbone and for keeping observation distinct from theorem. :contentReference[oaicite:4]{index=4}
+            </p>
+            <a href="https://bramdhontsr.github.io/tpoe-deepseek/">Open DeepSeek edition</a>
+          </div>
+
+          <div class="mini-card">
+            <h3>OpenAI</h3>
+            <p>
+              The clearest public synthesis. Best suited as the editorial bridge between Bram’s work, mathematics, and a readable main narrative. :contentReference[oaicite:5]{index=5}
+            </p>
+            <a href="https://bramdhontsr.github.io/tpoe-openai/">Open OpenAI edition</a>
+          </div>
+        </div>
+
+        <p>
+          Their proper place is therefore secondary but useful: they are tools for exposition, comparison, and critique.
+          The main page must remain unmistakably Bram’s page.
+        </p>
+      </section>
+
+      <section class="section" id="status">
+        <div class="section-label">Section 8</div>
+        <h2>What this project is</h2>
+        <p class="summary">
+          This is not merely a paper, not merely a painting archive, and not merely a philosophical manifesto.
+          It is a central project page for a body of work in which art, mathematics, path, and life are tightly interwoven.
+        </p>
+
+        <p>
+          The right tone is proud but not inflated. The page should state clearly that Bram D’Hont’s aesthetic research led,
+          by a partly accidental but structurally meaningful route, toward A003558, the Poincaré-series observation,
+          the lemniscape, and a broader meditation on praxis and poiesis.
+        </p>
+
+        <p>
+          That is enough. Nothing more needs to be exaggerated. The work already has enough force.
+        </p>
+      </section>
+
+      <section class="section" id="links">
+        <div class="section-label">Section 9</div>
+        <h2>Main links</h2>
+        <p class="summary">
+          The following pages form the present public structure of the project.
+        </p>
+
+        <ul>
+          <li><a href="https://bramdhontsr.github.io/tpoe/">tpoe — main page / synthesis</a></li>
+          <li><a href="https://bramdhontsr.github.io/tpoe-anthropic/">tpoe-anthropic — Claude / Anthropic edition</a></li>
+          <li><a href="https://bramdhontsr.github.io/tpoe-deepseek/">tpoe-deepseek — DeepSeek edition</a></li>
+          <li><a href="https://bramdhontsr.github.io/tpoe-openai/">tpoe-openai — OpenAI edition</a></li>
+        </ul>
+
+        <p><a href="#top">Back to top</a></p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    Main index page for <em>The Praxis of Everything</em>. Bram D’Hont remains the primary source; the AI editions are secondary interpretive documents.
+  </footer>
+</body>
+</html>
